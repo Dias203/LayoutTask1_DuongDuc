@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/appbarLayout"
+        layout="@layout/appbar" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgApp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_40sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbarLayout"
+        app:layout_constraintWidth_percent="0.564"
+        app:srcCompat="@drawable/image_intro" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/imgApp"
+        app:layout_constraintStart_toStartOf="@+id/imgApp"
+        app:layout_constraintTop_toBottomOf="@+id/imgApp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtRemoveAds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/remove_ads"
+            android:textColor="@color/dark_charcoal"
+            android:textSize="@dimen/_24sdp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtBestExperience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_extra_bold"
+            android:text="@string/best_exp"
+            android:textColor="@color/vivid_orange"
+            android:textSize="@dimen/_32sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtRemoveAds" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iconExperience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/image_vector"
+            app:layout_constraintStart_toEndOf="@id/txtBestExperience"
+            app:layout_constraintTop_toBottomOf="@+id/txtRemoveAds" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layoutBtnPurchase"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_29sdp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintWidth_percent="0.95">
+
+        <include
+            android:id="@+id/sevenDay"
+            layout="@layout/item_subscription" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/lifeTime"
+                layout="@layout/item_subscription" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBestOffer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:background="@drawable/bg_best_offer_tag"
+                android:paddingStart="@dimen/_8sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:paddingEnd="@dimen/_8sdp"
+                android:paddingBottom="@dimen/_4sdp"
+                android:text="@string/best_offer"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </FrameLayout>
+
+        <include
+            android:id="@+id/monthly"
+            layout="@layout/item_subscription" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOnetimePurchase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_43sdp"
+        android:fontFamily="@font/nunito_sans_semi_bold"
+        android:text="@string/onetime_purchase"
+        android:textColor="@color/dark_charcoal"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="@id/layoutBtnPurchase"
+        app:layout_constraintStart_toStartOf="@id/layoutBtnPurchase"
+        app:layout_constraintTop_toBottomOf="@id/layoutBtnPurchase" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnContinue"
+        style="@android:style/Widget.Button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_continue"
+        android:fontFamily="@font/nunito_sans_semi_bold"
+        android:text="@string/_continue"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20sdp"
+        app:layout_constraintEnd_toEndOf="@id/tvOnetimePurchase"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintStart_toStartOf="@id/tvOnetimePurchase"
+        app:layout_constraintTop_toBottomOf="@id/tvOnetimePurchase"
+        app:layout_constraintWidth_percent="0.8222" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDesPolicy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:fontFamily="@font/nunito_sans_semi_bold"
+        android:text="@string/policy"
+        android:textColor="@color/dark_charcoal"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="@id/layoutBtnPurchase"
+        app:layout_constraintStart_toStartOf="@id/layoutBtnPurchase"
+        app:layout_constraintTop_toBottomOf="@id/btnContinue" />
+</androidx.constraintlayout.widget.ConstraintLayout>
