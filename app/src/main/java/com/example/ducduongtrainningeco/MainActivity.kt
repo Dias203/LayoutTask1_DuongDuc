@@ -1,7 +1,6 @@
 package com.example.ducduongtrainningeco
 
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -13,6 +12,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ducduongtrainningeco.databinding.ActivityMainBinding
+import com.example.ducduongtrainningeco.databinding.ItemSubscriptionBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -33,15 +33,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setSelectedSubscription() {
-        binding.sevenDay.apply {
-            itemContainer.setBackgroundResource(R.drawable.bg_subscription_selected)
-            itemContainer.scaleX = 1.10f
-            itemContainer.scaleY = 1.10f
-            textDuration.scaleX = 0.92f
-            textDuration.scaleY = 0.92f
-            textPrice.scaleX = 0.92f
-            textPrice.scaleY = 0.92f
+        // Initial selection
+        selectSubscription(binding.sevenDay)
 
+        // Set up click listeners
+        binding.sevenDay.itemContainer.setOnClickListener {
+            selectSubscription(binding.sevenDay)
+            deselectSubscription(binding.lifeTime)
+            deselectSubscription(binding.monthly)
+        }
+
+        binding.lifeTime.itemContainer.setOnClickListener {
+            selectSubscription(binding.lifeTime)
+            deselectSubscription(binding.sevenDay)
+            deselectSubscription(binding.monthly)
+        }
+
+        binding.monthly.itemContainer.setOnClickListener {
+            selectSubscription(binding.monthly)
+            deselectSubscription(binding.sevenDay)
+            deselectSubscription(binding.lifeTime)
         }
     }
 
@@ -103,6 +114,30 @@ class MainActivity : AppCompatActivity() {
             spannableString.setSpan(strikethroughSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
             textView.text = spannableString
+        }
+    }
+
+    private fun selectSubscription(view: ItemSubscriptionBinding) {
+        view.apply {
+            itemContainer.setBackgroundResource(R.drawable.bg_subscription_selected)
+            itemContainer.scaleX = 1.10f
+            itemContainer.scaleY = 1.10f
+            textDuration.scaleX = 0.92f
+            textDuration.scaleY = 0.92f
+            textPrice.scaleX = 0.92f
+            textPrice.scaleY = 0.92f
+        }
+    }
+
+    private fun deselectSubscription(view: ItemSubscriptionBinding) {
+        view.apply {
+            itemContainer.setBackgroundResource(R.drawable.bg_subscription_default)
+            itemContainer.scaleX = 1f
+            itemContainer.scaleY = 1f
+            textDuration.scaleX = 1f
+            textDuration.scaleY = 1f
+            textPrice.scaleX = 1f
+            textPrice.scaleY = 1f
         }
     }
 }
