@@ -1,6 +1,7 @@
 package com.example.ducduongtrainningeco
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
@@ -8,6 +9,7 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.StrikethroughSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -153,6 +155,13 @@ class MainActivity : AppCompatActivity() {
             val strikethroughSpan = StrikethroughSpan()
             spannableString.setSpan(strikethroughSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+            val italicSpan = StyleSpan(Typeface.ITALIC)
+            spannableString.setSpan(
+                italicSpan,
+                0,
+                text.length,
+                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
             textView.text = spannableString
         }
     }
