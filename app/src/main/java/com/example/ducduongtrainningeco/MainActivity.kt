@@ -11,8 +11,8 @@ import android.text.style.StrikethroughSpan
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.ducduongtrainningeco.databinding.ActivityMainBinding
-import com.example.ducduongtrainningeco.databinding.ItemSubscriptionBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -28,40 +28,81 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupSubscriptionViews() {
-        setSelectedSubscription()
-        setupSubscriptionTexts()
+        setupSubscriptionClickListeners()
     }
 
-    private fun setSelectedSubscription() {
-        // Initial selection
-        selectSubscription(binding.sevenDay)
+    private fun setupSubscriptionClickListeners() {
+        binding.apply {
+            sevenDayBtn.setOnClickListener {
+                handleSubscriptionSelection(
+                    selectedView = sevenDayBtn,
+                    selectedTextViews = arrayOf(tvSevenDayDuration, tvSevenDayPrice, tvSevenDayOldPrice),
+                    lifeTimeBtn to arrayOf(textDurationLifeTime, textPriceLifetime, textOldPriceLifetime),
+                    monthlyBtn to arrayOf(tvMonthlyDuration, tvMonthlyPrice, tvMonthlyOldPrice)
+                )
+            }
 
-        // Set up click listeners
-        binding.sevenDay.itemContainer.setOnClickListener {
-            selectSubscription(binding.sevenDay)
-            deselectSubscription(binding.lifeTime)
-            deselectSubscription(binding.monthly)
-        }
+            lifeTimeBtn.setOnClickListener {
+                handleSubscriptionSelection(
+                    selectedView = lifeTimeBtn,
+                    selectedTextViews = arrayOf(textDurationLifeTime, textPriceLifetime, textOldPriceLifetime),
+                    sevenDayBtn to arrayOf(tvSevenDayDuration, tvSevenDayPrice, tvSevenDayOldPrice),
+                    monthlyBtn to arrayOf(tvMonthlyDuration, tvMonthlyPrice, tvMonthlyOldPrice)
+                )
+            }
 
-        binding.lifeTime.itemContainer.setOnClickListener {
-            selectSubscription(binding.lifeTime)
-            deselectSubscription(binding.sevenDay)
-            deselectSubscription(binding.monthly)
-        }
-
-        binding.monthly.itemContainer.setOnClickListener {
-            selectSubscription(binding.monthly)
-            deselectSubscription(binding.sevenDay)
-            deselectSubscription(binding.lifeTime)
+            monthlyBtn.setOnClickListener {
+                handleSubscriptionSelection(
+                    selectedView = monthlyBtn,
+                    selectedTextViews = arrayOf(tvMonthlyDuration, tvMonthlyPrice, tvMonthlyOldPrice),
+                    sevenDayBtn to arrayOf(tvSevenDayDuration, tvSevenDayPrice, tvSevenDayOldPrice),
+                    lifeTimeBtn to arrayOf(textDurationLifeTime, textPriceLifetime, textOldPriceLifetime)
+                )
+            }
         }
     }
 
-    private fun setupSubscriptionTexts() {
-        binding.monthly.apply {
-            textDuration.text = getString(R.string.monthly)
+    private fun handleSubscriptionSelection(
+        selectedView: ConstraintLayout,
+        selectedTextViews: Array<TextView>,
+        vararg viewsToDeselect: Pair<ConstraintLayout, Array<TextView>>
+    ) {
+        selectSubscription(selectedView)
+        scaleSelectedText(*selectedTextViews)
+
+        viewsToDeselect.forEach { (view, textViews) ->
+            deselectSubscription(view)
+            resetTextScale(*textViews)
         }
-        binding.lifeTime.apply {
-            textDuration.text = getString(R.string.life_time)
+    }
+
+    private fun scaleSelectedText(vararg textViews: TextView) {
+        textViews.forEach {
+            it.scaleX = 1.1f
+            it.scaleY = 1.1f
+        }
+    }
+
+    private fun resetTextScale(vararg textViews: TextView) {
+        textViews.forEach {
+            it.scaleX = 1.0f
+            it.scaleY = 1.0f
+        }
+    }
+
+    private fun selectSubscription(view: ConstraintLayout) {
+        view.apply {
+            setBackgroundResource(R.drawable.bg_subscription_selected)
+            scaleX = 1.15f
+            scaleY = 1.10f
+        }
+    }
+
+    private fun deselectSubscription(view: ConstraintLayout) {
+        view.apply {
+            setBackgroundResource(R.drawable.bg_subscription_default)
+            scaleX = 1.0f
+            scaleY = 1.0f
         }
     }
 
@@ -82,19 +123,10 @@ class MainActivity : AppCompatActivity() {
         binding.tvDesPolicy.movementMethod = LinkMovementMethod.getInstance()
     }
 
-    private fun setupOldPrice() {
-
-        setupStrikethroughText(
-            binding.sevenDay.textOldPrice,
-            binding.lifeTime.textOldPrice,
-            binding.monthly.textOldPrice
-        )
-    }
-
     private fun createPrivacyPolicyClickableSpan(): ClickableSpan {
         return object : ClickableSpan() {
             override fun onClick(widget: View) {
-
+                // TODO: Implement navigation to privacy policy
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -103,6 +135,14 @@ class MainActivity : AppCompatActivity() {
                 ds.isUnderlineText = true
             }
         }
+    }
+
+    private fun setupOldPrice() {
+        setupStrikethroughText(
+            binding.tvSevenDayOldPrice,
+            binding.textOldPriceLifetime,
+            binding.tvMonthlyOldPrice
+        )
     }
 
     private fun setupStrikethroughText(vararg textViews: TextView) {
@@ -114,30 +154,6 @@ class MainActivity : AppCompatActivity() {
             spannableString.setSpan(strikethroughSpan, 0, text.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
             textView.text = spannableString
-        }
-    }
-
-    private fun selectSubscription(view: ItemSubscriptionBinding) {
-        view.apply {
-            itemContainer.setBackgroundResource(R.drawable.bg_subscription_selected)
-            itemContainer.scaleX = 1.10f
-            itemContainer.scaleY = 1.10f
-            textDuration.scaleX = 0.92f
-            textDuration.scaleY = 0.92f
-            textPrice.scaleX = 0.92f
-            textPrice.scaleY = 0.92f
-        }
-    }
-
-    private fun deselectSubscription(view: ItemSubscriptionBinding) {
-        view.apply {
-            itemContainer.setBackgroundResource(R.drawable.bg_subscription_default)
-            itemContainer.scaleX = 1f
-            itemContainer.scaleY = 1f
-            textDuration.scaleX = 1f
-            textDuration.scaleY = 1f
-            textPrice.scaleX = 1f
-            textPrice.scaleY = 1f
         }
     }
 }
