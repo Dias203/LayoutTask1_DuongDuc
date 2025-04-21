@@ -72,7 +72,7 @@
             android:textStyle="bold"
             android:layout_marginHorizontal="@dimen/_9sdp"
             android:paddingHorizontal="@dimen/_6sdp"
-            android:paddingVertical="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_2sdp"
             app:layout_constraintEnd_toEndOf="@id/imgApp"
             app:layout_constraintStart_toStartOf="@id/imgApp"
             app:layout_constraintTop_toBottomOf="@id/imgApp" />
@@ -88,7 +88,7 @@
             android:textSize="@dimen/_32sdp"
             android:layout_marginHorizontal="@dimen/_9sdp"
             android:paddingHorizontal="@dimen/_6sdp"
-            android:paddingVertical="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_2sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvtRemoveAds" />
@@ -96,7 +96,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/sevenDayBtn"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_9sdp"
             android:layout_marginTop="@dimen/_29sdp"
             android:scaleX="1.1"
@@ -146,6 +146,7 @@
                 android:textSize="@dimen/_9sdp"
                 android:scaleX="1.1"
                 android:scaleY="1.1"
+                android:paddingBottom="@dimen/_6sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvSevenDayPrice" />
@@ -155,7 +156,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lifeTimeBtn"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintDimensionRatio="96:105"
             app:layout_constraintWidth_percent="0.266"
             app:layout_constraintEnd_toStartOf="@id/monthlyBtn"
@@ -198,6 +199,7 @@
                 android:layout_margin="@dimen/_2sdp"
                 android:text="@string/old_price"
                 android:textColor="#999999"
+                android:paddingBottom="@dimen/_6sdp"
                 android:textSize="@dimen/_9sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,7 +228,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/monthlyBtn"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintDimensionRatio="96:105"
             app:layout_constraintWidth_percent="0.266"
             android:background="@drawable/bg_subscription_default"
@@ -271,6 +273,7 @@
                 android:layout_margin="@dimen/_2sdp"
                 android:text="@string/old_price"
                 android:textColor="#999999"
+                android:paddingBottom="@dimen/_6sdp"
                 android:textSize="@dimen/_9sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
