@@ -306,16 +306,14 @@
             android:background="@drawable/bg_continue"
             android:fontFamily="@font/nunito_sans_semi_bold"
             android:text="@string/_continue"
-            android:paddingVertical="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_9sdp"
             android:paddingHorizontal="@dimen/_9sdp"
-            android:layout_marginHorizontal="@dimen/_9sdp"
+            android:layout_marginHorizontal="@dimen/_13sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sdp"
-            app:layout_constraintDimensionRatio="5.29:1"
-            app:layout_constraintEnd_toEndOf="@id/tvOnetimePurchase"
-            app:layout_constraintStart_toStartOf="@id/tvOnetimePurchase"
-            app:layout_constraintTop_toBottomOf="@id/tvOnetimePurchase"
-            app:layout_constraintWidth_percent="0.8222" />
+            app:layout_constraintEnd_toEndOf="@id/monthlyBtn"
+            app:layout_constraintStart_toStartOf="@id/sevenDayBtn"
+            app:layout_constraintTop_toBottomOf="@id/tvOnetimePurchase" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDesPolicy"
