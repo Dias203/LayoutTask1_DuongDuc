@@ -3,6 +3,7 @@ package com.example.ducduongtrainningeco
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ducduongtrainningeco.databinding.ActivitySecondBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class SecondActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySecondBinding
@@ -14,7 +15,8 @@ class SecondActivity : AppCompatActivity() {
 
 
         binding.btnShowBottomSheet.setOnClickListener {
-            showOfferBottomSheet()
+            //showOfferBottomSheet()
+            showOfferBottomSheetDialog()
         }
 
     }
@@ -22,5 +24,12 @@ class SecondActivity : AppCompatActivity() {
     private fun showOfferBottomSheet() {
         val bottomSheetFragment = OfferBottomSheetFragment.newInstance()
         bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+    }
+
+    private fun showOfferBottomSheetDialog() {
+        val bottomSheetDialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.layout_bottom_sheet, null)
+        bottomSheetDialog.setContentView(view)
+        bottomSheetDialog.show()
     }
 }
