@@ -66,14 +66,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_13sdp"
-                android:paddingHorizontal="@dimen/_6sdp"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:includeFontPadding="false"
                 android:maxLines="2"
+                android:paddingHorizontal="@dimen/_6sdp"
                 android:paddingVertical="@dimen/_2sdp"
                 android:text="Get 40% Off"
-                tools:text="Get 40% Offafdadsfaadfasdadfadadfadfads"
                 android:textColor="#F34732"
                 android:textSize="@dimen/_42sdp"
                 app:autoSizeMaxTextSize="@dimen/_42sdp"
@@ -83,7 +82,8 @@
                 app:layout_constraintEnd_toEndOf="@id/tv1"
                 app:layout_constraintStart_toStartOf="@id/tv1"
                 app:layout_constraintTop_toBottomOf="@id/tv1"
-                tools:ignore="HardcodedText" />
+                tools:ignore="HardcodedText"
+                tools:text="Get 40% Offafdadsfaadfasdadfadadfadfads" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv3"
