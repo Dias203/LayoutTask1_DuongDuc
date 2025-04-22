@@ -51,4 +51,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation(libs.sdp.android)
+    implementation(libs.github.glide)
+
 }
