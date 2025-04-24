@@ -15,8 +15,7 @@ class SecondActivity : AppCompatActivity() {
 
 
         binding.btnShowBottomSheet.setOnClickListener {
-            //showOfferBottomSheet()
-            showOfferBottomSheetDialog()
+            showOfferBottomSheet()
         }
 
     }
@@ -24,12 +23,5 @@ class SecondActivity : AppCompatActivity() {
     private fun showOfferBottomSheet() {
         val bottomSheetFragment = OfferBottomSheetFragment.newInstance()
         bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
-    }
-
-    private fun showOfferBottomSheetDialog() {
-        val bottomSheetDialog = BottomSheetDialog(this)
-        val view = layoutInflater.inflate(R.layout.layout_bottom_sheet, null)
-        bottomSheetDialog.setContentView(view)
-        bottomSheetDialog.show()
     }
 }

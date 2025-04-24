@@ -52,5 +52,5 @@ dependencies {
 
     implementation(libs.sdp.android)
     implementation(libs.github.glide)
-
+    implementation (libs.lottie)
 }
