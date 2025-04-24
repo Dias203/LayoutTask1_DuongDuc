@@ -16,5 +16,6 @@ class PaywallActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        //Đây là dương đức code on branch Main
     }
 }
