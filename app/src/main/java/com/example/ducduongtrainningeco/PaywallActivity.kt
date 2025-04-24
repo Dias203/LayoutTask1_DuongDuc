@@ -17,5 +17,6 @@ class PaywallActivity : AppCompatActivity() {
             insets
         }
         //Đây là dương đức code on branch Main
+        //Dương đức sẽ chuyển sang branch Master, merge vao master,
     }
 }
